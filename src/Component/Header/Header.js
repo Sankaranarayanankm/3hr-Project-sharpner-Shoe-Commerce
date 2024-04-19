@@ -4,7 +4,9 @@ import CartContext from "../Store/cart-context";
 
 const Header = (props) => {
   const cartCtx=useContext(CartContext);
-  const items=cartCtx.items.length;
+  const items=cartCtx.cartItems.reduce((curr,item)=>{
+    return curr+item.largeQty+item.mediumQty+item.smallQty
+  },0);
   
   return (
     <header>
